@@ -89,7 +89,7 @@ corresponding value in both (a) the rest of the bindings, and (b) the body of
 the let expression.  Identifiers evaluate to whatever their current stored
 value is.  There are several examples further down to make this concrete.
 
-Here are some examples of Adder programs:
+Here are some examples of Adder programs (for brevity we omit the source location stored in the Expr type):
 
 ### Example 1
 
@@ -102,7 +102,7 @@ Here are some examples of Adder programs:
 **Abstract Syntax**
 
 ```haskell
-Number(5)
+Number 5
 ```
 
 **Result**
@@ -122,7 +122,7 @@ sub1(add1(sub1(5)))
 **Abstract Syntax**
 
 ```haskell
-Prim1(Sub1, Prim1(Add1, Prim1(Sub1, Number(5))))
+Prim1 Sub1 (Prim1 Add1 (Prim1 Sub1 (Number 5)))
 ```
 
 **Result**
@@ -143,8 +143,8 @@ let x = 5 in add1(x)
 
 ```haskell
 Let (Bind "x")
-    (Number(5))
-    (Prim1(Add1, Id("x")))
+    (Number 5)
+    (Prim1 Add1 (Id "x")))
 ```
 
 **Result**
@@ -168,10 +168,10 @@ in
 
 ```haskell
 Let (Bind "x")
-    (Number(5))  
+    (Number 5)  
     (Let (Bind "y")
-         (Prim1(Sub1(Id("x"))))
-         (Prim1(Sub1(Id("y")))))
+         (Prim1 Sub1 (Id "x"))
+         (Prim1 Sub1 (Id "y")))
 ```
 
 **Result**
