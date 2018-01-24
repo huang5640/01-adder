@@ -142,7 +142,7 @@ let x = 5 in add1(x)
 **Abstract Syntax**
 
 ```haskell
-Let (Bind "x" ...)
+Let (Bind "x")
     (Number(5))
     (Prim1(Add1, Id("x")))
 ```
@@ -171,7 +171,7 @@ Let (Bind "x")
     (Number(5))  
     (Let (Bind "y")
          (Prim1(Sub1(Id("x"))))
-         (Prim1(Sub1("y"))))
+         (Prim1(Sub1(Id("y")))))
 ```
 
 **Result**
